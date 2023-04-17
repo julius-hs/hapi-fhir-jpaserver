@@ -21,16 +21,16 @@
     <packaging>war</packaging>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <logback-classic.version>1.2.11</logback-classic.version>
-        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <slf4j-api.version>2.0.7</slf4j-api.version>
     </properties>
 
     <prerequisites>
         <maven>3.8.3</maven>
     </prerequisites>
 
-    <name>HAPI FHIR JPA Server - Starter Project</name>
+    <name>HAPI FHIR JPA Server</name>
 
     <repositories>
         <repository>
@@ -363,6 +363,13 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <!-- NOTE: requires a provider (slf4j-simple) after 2.x.x upgrade -->
+        <!-- see https://www.slf4j.org/manual.html -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
             <version>${slf4j-api.version}</version>
         </dependency>
 
