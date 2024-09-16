@@ -1,11 +1,12 @@
-version: "3"
 services:
-  hapi-fhir-jpaserver-start:
+  hapi-fhir-jpaserver:
     build: .
-    container_name: hapi-fhir-jpaserver-start
+    container_name: hapi-fhir-jpaserver
     restart: on-failure
     ports:
       - "8080:8080"
+    networks:
+      - test-network
   hapi-fhir-postgres:
     image: postgres:13-alpine
     container_name: hapi-fhir-postgres
@@ -16,5 +17,10 @@ services:
       POSTGRES_PASSWORD: "admin"
     volumes:
       - hapi-fhir-postgres:/var/lib/postgresql/data
+    networks:
+      - test-network
 volumes:
   hapi-fhir-postgres:
+networks:
+  test-network:
+    external: true
